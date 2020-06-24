@@ -10,7 +10,8 @@ namespace StudentManagement_Ver1
 		public List<Student> Students= new List<Student>();
 		public void RemoveStudent(string id)
 		{
-
+			var result = Students.Where(student => student.Id == id).ToList();
+			Students.Remove(result[0]);
 		}
 		public void GetListStudent()
 		{
@@ -49,10 +50,14 @@ namespace StudentManagement_Ver1
 				{
 					result[0].EditGrade(physicGrade, mathGrade, englishGrade);
 					Interface.SetColorG();
+					Console.WriteLine("\n\tTHIS REVISION HAS BEEN SUBMITED !");
 					Console.ResetColor();
 				}
 				else
 				{
+					Interface.SetColorR();
+					Console.WriteLine("\n\tTHIS REVISION HAS BEEN DELETED !");
+					Console.ResetColor();
 					return;
 				}
 			}

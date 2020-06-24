@@ -45,10 +45,6 @@ namespace StudentManagement_Ver1
 				return false;
 			}
 		}
-		public static void ConfirmDeleteBox()
-		{
-
-		}
 		public static void HeaderOfListTable()
 		{
 			SetColorTitle();

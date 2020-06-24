@@ -27,7 +27,7 @@ namespace StudentManagement_Ver1
 							break;
 
 						case 3:
-
+							RemoveStudent();
 							break;
 
 						case 4:
@@ -57,6 +57,7 @@ namespace StudentManagement_Ver1
 					Console.Beep();
 					Console.ReadKey();
 				}
+				GC.Collect();
 			} while (choice != 0 || isValidChoice == false);
 		}
 		public void InputStudentInfor()
@@ -128,6 +129,10 @@ namespace StudentManagement_Ver1
 			idStudent = Console.ReadLine();
 			do
 			{
+				Console.Clear();
+				Interface.SetColorTitle();
+				Console.WriteLine("\n\tEDITING STUDENT [" + idStudent + "]");
+				Console.ResetColor();
 				Console.Write("\n\tNEW ENGLISH GRADE \n\t>_");
 				float.TryParse(Console.ReadLine(), out gradeEnglish);
 				Console.Write("\n\tNEW MATH GRADE \n\t>_");
@@ -135,7 +140,6 @@ namespace StudentManagement_Ver1
 				Console.Write("\n\tNEW PHYSIC GRADE \n\t>_");
 				float.TryParse(Console.ReadLine(), out gradePhysic);
 				student.EditGrade(gradePhysic, gradeMath, gradeEnglish);
-				Console.Clear();
 			} while (!IsValidationData(student));
 			classRoom.EditGrade(idStudent, gradePhysic, gradeMath, gradeEnglish);
 			Console.ReadKey();
@@ -145,7 +149,7 @@ namespace StudentManagement_Ver1
 			string id;
 			Console.Write("\n\tENTER STUDENT ID\n\t>_");
 			id = Console.ReadLine();
-
+			Console.ReadKey();
 		}
 		public void FindStudentByID()
 		{
