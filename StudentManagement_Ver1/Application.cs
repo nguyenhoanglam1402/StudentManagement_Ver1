@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace StudentManagement_Ver1
 {
 	class Application
 	{
-		
+
 		ClassRoom classRoom = new ClassRoom();
 		public void Run()
 		{
@@ -33,7 +31,7 @@ namespace StudentManagement_Ver1
 							break;
 
 						case 4:
-
+							DisplayListStudent();
 							break;
 
 						case 5:
@@ -64,6 +62,7 @@ namespace StudentManagement_Ver1
 
 		public void InputStudentInfor()
 		{
+			int amount;
 			string idStudent;
 			string nameOfStudent;
 			float physicGrade, mathGrade, englishGrade;
@@ -72,8 +71,8 @@ namespace StudentManagement_Ver1
 			Console.Write("\n\tEnter amount of student :>_");
 			Console.ResetColor();
 			try
-			{ 
-			int amount = classRoom.Students.Count + int.Parse(Console.ReadLine());
+			{
+				amount = classRoom.Students.Count + int.Parse(Console.ReadLine());
 				for (int i = classRoom.Students.Count; i < amount; i++)
 				{
 					Student student = new Student();
@@ -81,64 +80,39 @@ namespace StudentManagement_Ver1
 					{
 						Console.ResetColor();
 						Console.Clear();
-						Interface.SetColorCommand();
-						Console.Write("\tENTER THE STUDENT ID [" + i + "]");
-						Console.ResetColor();
+						Console.Write("\tENTER THE STUDENT ID [" + (i + 1) + "] \n\t>_");
 						idStudent = Console.ReadLine();
-						Interface.SetColorCommand();
-						Console.Write("\n\tENTER THE STUDENT NAME [" + i + "]");
-						Console.ResetColor();
+						Console.Write("\n\tENTER THE STUDENT NAME [" + (i + 1) + "] \n\t>_");
 						nameOfStudent = Console.ReadLine();
-						Interface.SetColorCommand();
-						Console.Write("n\tENTER THE PHYSIC GRADE [" + i + "]");
-						Console.ResetColor();
+						Console.Write("\n\tENTER THE PHYSIC GRADE [" + (i + 1) + "] \n\t>_");
 						physicGrade = float.Parse(Console.ReadLine());
-						Interface.SetColorCommand();
-						Console.Write("\n\tENTER THE MATH GRADE [" + i + "]");
-						Console.ResetColor();
+						Console.Write("\n\tENTER THE MATH GRADE [" + (i + 1) + "] \n\t>_");
 						mathGrade = float.Parse(Console.ReadLine());
-						Interface.SetColorCommand();
-						Console.Write("\n\tENTER THE ENGLISH GRADE [" + i + "]");
-						Console.ResetColor();
+						Console.Write("\n\tENTER THE ENGLISH GRADE [" + (i + 1) + "] \n\t>_");
 						englishGrade = float.Parse(Console.ReadLine());
 						student.SetInformation(idStudent, nameOfStudent, physicGrade, mathGrade, englishGrade);
 					} while (!checkValidationData(student));
-					Interface.SetColorG();
-					Console.Write("\n\tSubmit");
-					Interface.SetColorR();
-					Console.WriteLine("\t\tUnsubmit");
-					Console.ResetColor();
-					if (char.Parse(Console.ReadLine()) == 'Y')
-					{
-						classRoom.Students.Add(student);
-						Interface.SetColorG();
-						Console.WriteLine("\n\tSubmit successfully !");
-					}
-					else
-					{
-						student = null;
-						Interface.SetColorR();
-						Console.WriteLine("\n\tYour change is not submited !");
-					}		
+					Interface.ConfirmSubmissionBox(student, classRoom.Students);
 				}
-				
+
 			}
-			catch(Exception e)
+			catch (Exception e)
 			{
-				Console.WriteLine("You ma")
+				Interface.SetColorR();
+				Console.WriteLine("\tOops ! Something wrong happen !" +
+									"\n\n\tDetail: " + e.Message);
+				Console.ReadKey();
 			}
 		}
-
-		private void DisplayHighestStudent()
+		public void DisplayListStudent()
 		{
-
+			classRoom.GetListStudent();
 		}
-
 		private bool checkValidationData(Student student)
 		{
-			return ((student.EnglishGrade >= 0 && student.EnglishGrade <= 10) ||
-					(student.MathGrade >= 0 && student.MathGrade <= 10) ||
-					(student.PhysicGrade >= 0 && student.PhysicGrade <= 10) ||
+			return ((student.EnglishGrade >= 0 && student.EnglishGrade <= 10) &&
+					(student.MathGrade >= 0 && student.MathGrade <= 10) &&
+					(student.PhysicGrade >= 0 && student.PhysicGrade <= 10) &&
 					(student.Id.Length <= 9));
 		}
 	}

@@ -37,9 +37,14 @@ namespace StudentManagement_Ver1
 			MathGrade = mathGrade;
 			EnglishGrade = englishGrade;
 		}
-		public string GetInformation()
+		public void GetInformation()
 		{
-			return "";
+			Console.WriteLine("|{0,-10}|{1,-25}|{2,-15}|{3,-15}|{4,-15}|{5,-15}",
+				Id, NameOfStudent, PhysicGrade, MathGrade, EnglishGrade, CalculateAvarage());
+		}
+		public double CalculateAvarage()
+		{
+			return (Math.Round(((PhysicGrade + MathGrade + EnglishGrade) / 3), 1));
 		}
 	}
 }

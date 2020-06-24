@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace StudentManagement_Ver1
 {
@@ -25,6 +26,29 @@ namespace StudentManagement_Ver1
 			Console.Write("\n\t[Your choice]");
 			Console.Beep();
 			Console.ResetColor();
+		}
+
+		public static void ConfirmSubmissionBox(Student student, List<Student> students)
+		{
+			SetColorG();
+			Console.Write("\n\tSubmit");
+			SetColorR();
+			Console.WriteLine("\t\tUnsubmit");
+			Console.ResetColor();
+			if (char.Parse(Console.ReadLine()) == 'Y')
+			{
+				students.Add(student);
+				SetColorG();
+				Console.WriteLine("\n\tSubmit successfully !");
+				Console.ReadKey();
+			}
+			else
+			{
+				student = null;
+				SetColorR();
+				Console.WriteLine("\n\tYour change is not submited !");
+				Console.ReadKey();
+			}
 		}
 		/* What is the Makeup Method
 		 * They are a group of method which make the interface be more beautiful
