@@ -21,7 +21,7 @@ namespace StudentManagement_Ver1
 			Console.WriteLine("\t|  [6] Find the worst student in class     |");
 			Console.WriteLine("\t|  [7] Find the a student in class         |");
 			Console.WriteLine("\t|  [0] Exit the application                |");
-			Console.WriteLine("\t|__________________________________________|");
+			Console.WriteLine("\t|________________.*.<~>.*._________________|");
 			SetColorCommand();
 			Console.Write("\n\t[Your choice]");
 			Console.Beep();
@@ -31,10 +31,11 @@ namespace StudentManagement_Ver1
 		public static void ConfirmSubmissionBox(Student student, List<Student> students)
 		{
 			SetColorG();
-			Console.Write("\n\tSubmit");
+			Console.Write("\n\tSubmit [Y]");
 			SetColorR();
-			Console.WriteLine("\t\tUnsubmit");
+			Console.WriteLine("\t\tUnsubmit [Any key]");
 			Console.ResetColor();
+			Console.Write("\n\t>_");
 			if (char.Parse(Console.ReadLine()) == 'Y')
 			{
 				students.Add(student);
@@ -50,6 +51,15 @@ namespace StudentManagement_Ver1
 				Console.ReadKey();
 			}
 		}
+
+		public static void HeaderOfListTable()
+		{
+			SetColorTitle();
+			Console.WriteLine("\t|{0,-10}|{1,-25}|{2,-15}|{3,-15}|{4,-15}|{5,-15}|",
+								"ID", "FULL NAME", "PHYSIC GRADE", "MATH GRADE", "ENGLISH GRADE", "AVERAGE GRADE");
+			SetColorTable();
+		}
+
 		/* What is the Makeup Method
 		 * They are a group of method which make the interface be more beautiful
 		 * SetColorTitle() is used to set the color for tile and table header
@@ -58,6 +68,7 @@ namespace StudentManagement_Ver1
 		 * SetColorR() is used to set the color for error message or unsuccess message
 		 * SetColorCommand() is used to set the color for requirement of system
 		 */
+
 		#region[Makeup Method]
 
 		public static void SetColorTitle()
