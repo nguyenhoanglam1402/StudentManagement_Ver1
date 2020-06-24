@@ -91,7 +91,21 @@ namespace StudentManagement_Ver1
 						englishGrade = float.Parse(Console.ReadLine());
 						student.SetInformation(idStudent, nameOfStudent, physicGrade, mathGrade, englishGrade);
 					} while (!IsValidationData(student));
-					Interface.ConfirmSubmissionBox(student, classRoom.Students);
+					if(Interface.ConfirmSubmissionBox())
+					{
+						classRoom.Students.Add(student);
+						Interface.SetColorG();
+						Console.WriteLine("\n\tSubmit successfully !");
+						Console.ReadKey();
+					}
+					else
+					{
+						student = null;
+						Interface.SetColorR();
+						Console.WriteLine("\n\tYour change is not submited !");
+						Console.ReadKey();
+					}
+
 				}
 
 			}
@@ -121,9 +135,17 @@ namespace StudentManagement_Ver1
 				Console.Write("\n\tNEW PHYSIC GRADE \n\t>_");
 				float.TryParse(Console.ReadLine(), out gradePhysic);
 				student.EditGrade(gradePhysic, gradeMath, gradeEnglish);
+				Console.Clear();
 			} while (!IsValidationData(student));
 			classRoom.EditGrade(idStudent, gradePhysic, gradeMath, gradeEnglish);
 			Console.ReadKey();
+		}
+		public void RemoveStudent()
+		{
+			string id;
+			Console.Write("\n\tENTER STUDENT ID\n\t>_");
+			id = Console.ReadLine();
+
 		}
 		public void FindStudentByID()
 		{

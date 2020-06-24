@@ -28,7 +28,7 @@ namespace StudentManagement_Ver1
 			Console.ResetColor();
 		}
 
-		public static void ConfirmSubmissionBox(Student student, List<Student> students)
+		public static bool ConfirmSubmissionBox()
 		{
 			SetColorG();
 			Console.Write("\n\tSubmit [Y]");
@@ -38,20 +38,17 @@ namespace StudentManagement_Ver1
 			Console.Write("\n\t>_");
 			if (char.Parse(Console.ReadLine()) == 'Y')
 			{
-				students.Add(student);
-				SetColorG();
-				Console.WriteLine("\n\tSubmit successfully !");
-				Console.ReadKey();
+				return true;
 			}
 			else
 			{
-				student = null;
-				SetColorR();
-				Console.WriteLine("\n\tYour change is not submited !");
-				Console.ReadKey();
+				return false;
 			}
 		}
+		public static void ConfirmDeleteBox()
+		{
 
+		}
 		public static void HeaderOfListTable()
 		{
 			SetColorTitle();

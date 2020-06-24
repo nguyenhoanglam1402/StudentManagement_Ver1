@@ -8,6 +8,10 @@ namespace StudentManagement_Ver1
 	class ClassRoom
 	{
 		public List<Student> Students= new List<Student>();
+		public void RemoveStudent(string id)
+		{
+
+		}
 		public void GetListStudent()
 		{
 			Interface.HeaderOfListTable();
@@ -41,12 +45,16 @@ namespace StudentManagement_Ver1
 			var result = Students.Where(student => student.Id == id).ToList();
 			if (result.Count != 0)
 			{
-				Interface.HeaderOfListTable();
-				result[0].EditGrade(physicGrade, mathGrade, englishGrade);
-				Interface.SetColorG();
-				Console.WriteLine("\n\tDONE !\n");
-				Console.WriteLine("PRESS ANY KEY TO RETURN HOME SCREEN !");
-				Console.ResetColor();
+				if (Interface.ConfirmSubmissionBox())
+				{
+					result[0].EditGrade(physicGrade, mathGrade, englishGrade);
+					Interface.SetColorG();
+					Console.ResetColor();
+				}
+				else
+				{
+					return;
+				}
 			}
 			else
 			{
