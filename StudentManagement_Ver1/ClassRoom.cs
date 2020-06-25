@@ -1,17 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Linq;
 
 namespace StudentManagement_Ver1
 {
 	class ClassRoom
 	{
-		public List<Student> Students= new List<Student>();
+		public List<Student> Students = new List<Student>();
 		public void RemoveStudent(string id)
 		{
 			var result = Students.Where(student => student.Id == id).ToList();
-			Students.Remove(result[0]);
+			if (Interface.ConfirmSubmissionBox())
+			{
+				Interface.SetColorG();
+				Console.WriteLine("\n\tYOUR REQUEST IS SUBMITED !");
+				Students.Remove(result[0]);
+			}
+			else
+			{
+				Interface.SetColorR();
+				Console.WriteLine("\n\tYOUR REQUEST IS NOT SUBMITED !");
+				return;
+			}
 		}
 		public void GetListStudent()
 		{
@@ -25,7 +35,7 @@ namespace StudentManagement_Ver1
 		public void SelectStudentByID(string id)
 		{
 			var result = Students.Where(student => student.Id == id).ToList();
-			if (result.Count !=0)
+			if (result.Count != 0)
 			{
 				Interface.HeaderOfListTable();
 				result[0].GetInformation();
@@ -40,7 +50,7 @@ namespace StudentManagement_Ver1
 				Console.ResetColor();
 			}
 		}
-		public void EditGrade(string id, float physicGrade, 
+		public void EditGrade(string id, float physicGrade,
 								float mathGrade, float englishGrade)
 		{
 			var result = Students.Where(student => student.Id == id).ToList();
@@ -70,8 +80,29 @@ namespace StudentManagement_Ver1
 		}
 		public void GetListBestStudent()
 		{
-			var result = Students.OrderByDescending(student => student.CalculateAvarage());
-			Console.WriteLine(result);
+			var result = Students.OrderByDescending(student => student.CalculateAvarage()).ToList();
+			foreach (Student student in Students)
+			{
+				if (student.CalculateAvarage() == result[0].CalculateAvarage())
+				{
+					student.GetInformation();
+				}
+			}
+			Interface.SetColorG();
+			Console.WriteLine("\n\tPress any key to return home screen");
+		}
+		public void GetListWorstStudent()
+		{
+			var result = Students.OrderBy(student => student.CalculateAvarage()).ToList();
+			foreach (Student student in Students)
+			{
+				if (student.CalculateAvarage() == result[0].CalculateAvarage())
+				{
+					student.GetInformation();
+				}
+			}
+			Interface.SetColorG();
+			Console.WriteLine("\n\tPress any key to return home screen");
 		}
 	}
 }

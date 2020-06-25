@@ -35,7 +35,7 @@ namespace StudentManagement_Ver1
 							break;
 
 						case 5:
-							
+							ShowBestStudent();
 							break;
 
 						case 6:
@@ -59,6 +59,18 @@ namespace StudentManagement_Ver1
 				}
 				GC.Collect();
 			} while (choice != 0 || isValidChoice == false);
+		}
+		public void ShowWorstStudent()
+		{
+			Interface.HeaderOfListTable();
+			classRoom.GetListWorstStudent();
+			Console.ReadKey();
+		}
+		public void ShowBestStudent()
+		{
+			Interface.HeaderOfListTable();
+			classRoom.GetListBestStudent();
+			Console.ReadKey();
 		}
 		public void InputStudentInfor()
 		{
@@ -92,7 +104,7 @@ namespace StudentManagement_Ver1
 						englishGrade = float.Parse(Console.ReadLine());
 						student.SetInformation(idStudent, nameOfStudent, physicGrade, mathGrade, englishGrade);
 					} while (!IsValidationData(student));
-					if(Interface.ConfirmSubmissionBox())
+					if (Interface.ConfirmSubmissionBox())
 					{
 						classRoom.Students.Add(student);
 						Interface.SetColorG();
@@ -149,6 +161,7 @@ namespace StudentManagement_Ver1
 			string id;
 			Console.Write("\n\tENTER STUDENT ID\n\t>_");
 			id = Console.ReadLine();
+			classRoom.RemoveStudent(id);
 			Console.ReadKey();
 		}
 		public void FindStudentByID()
