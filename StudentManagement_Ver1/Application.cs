@@ -39,14 +39,15 @@ namespace StudentManagement_Ver1
 							break;
 
 						case 6:
-
+							ShowWorstStudent();
 							break;
 
 						case 7:
 							FindStudentByID();
 							break;
 						case 0:
-
+							Interface.SetColorCommand();
+							Console.WriteLine("\n\tSee you soon !");
 							break;
 					}
 				}

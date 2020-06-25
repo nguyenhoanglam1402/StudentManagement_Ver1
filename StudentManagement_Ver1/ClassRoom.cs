@@ -10,16 +10,22 @@ namespace StudentManagement_Ver1
 		public void RemoveStudent(string id)
 		{
 			var result = Students.Where(student => student.Id == id).ToList();
-			if (Interface.ConfirmSubmissionBox())
+			if (Interface.ConfirmSubmissionBox() && result.Count != 0)
 			{
 				Interface.SetColorG();
 				Console.WriteLine("\n\tYOUR REQUEST IS SUBMITED !");
 				Students.Remove(result[0]);
 			}
-			else
+			else if (!Interface.ConfirmSubmissionBox())
 			{
 				Interface.SetColorR();
 				Console.WriteLine("\n\tYOUR REQUEST IS NOT SUBMITED !");
+				return;
+			}
+			else
+			{
+				Interface.SetColorR();
+				Console.WriteLine("\n\tYou cannot remove a student who does not exist!");
 				return;
 			}
 		}
