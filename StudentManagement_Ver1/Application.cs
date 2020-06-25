@@ -5,11 +5,11 @@ namespace StudentManagement_Ver1
 	class Application
 	{
 
-		ClassRoom classRoom = new ClassRoom();
 		public void Run()
 		{
 			int choice = 0;
 			bool isValidChoice = true;
+			UserAction userAction = new UserAction();
 			do
 			{
 				Interface.MenuBoard();
@@ -19,31 +19,31 @@ namespace StudentManagement_Ver1
 					switch (choice)
 					{
 						case 1:
-							InputStudentInfor();
+							userAction.InputStudentInfor();
 							break;
 
 						case 2:
-							EditStudentInfor();
+							userAction.EditStudentInfor();
 							break;
 
 						case 3:
-							RemoveStudent();
+							userAction.RemoveStudent();
 							break;
 
 						case 4:
-							DisplayListStudent();
+							userAction.DisplayListStudent();
 							break;
 
 						case 5:
-							ShowBestStudent();
+							userAction.ShowBestStudent();
 							break;
 
 						case 6:
-							ShowWorstStudent();
+							userAction.ShowWorstStudent();
 							break;
 
 						case 7:
-							FindStudentByID();
+							userAction.FindStudentByID();
 							break;
 						case 0:
 							Interface.SetColorCommand();
@@ -60,136 +60,6 @@ namespace StudentManagement_Ver1
 				}
 				GC.Collect();
 			} while (choice != 0 || isValidChoice == false);
-		}
-		public void ShowWorstStudent()
-		{
-			Interface.HeaderOfListTable();
-			classRoom.GetListWorstStudent();
-			Console.ReadKey();
-		}
-		public void ShowBestStudent()
-		{
-			Interface.HeaderOfListTable();
-			classRoom.GetListBestStudent();
-			Console.ReadKey();
-		}
-		public void InputStudentInfor()
-		{
-			int amount;
-			string idStudent;
-			string nameOfStudent;
-			float physicGrade, mathGrade, englishGrade;
-			Console.Clear();
-			Interface.SetColorCommand();
-			Console.Write("\n\tEnter amount of student :>_");
-			Console.ResetColor();
-			try
-			{
-				amount = classRoom.Students.Count + int.Parse(Console.ReadLine());
-				for (int i = classRoom.Students.Count; i < amount; i++)
-				{
-					Student student = new Student();
-					do
-					{
-						Console.ResetColor();
-						Console.Clear();
-						Console.Write("\tENTER THE STUDENT ID [" + (i + 1) + "] \n\t>_");
-						idStudent = Console.ReadLine();
-						Console.Write("\n\tENTER THE STUDENT NAME [" + (i + 1) + "] \n\t>_");
-						nameOfStudent = Console.ReadLine();
-						Console.Write("\n\tENTER THE PHYSIC GRADE [" + (i + 1) + "] \n\t>_");
-						physicGrade = float.Parse(Console.ReadLine());
-						Console.Write("\n\tENTER THE MATH GRADE [" + (i + 1) + "] \n\t>_");
-						mathGrade = float.Parse(Console.ReadLine());
-						Console.Write("\n\tENTER THE ENGLISH GRADE [" + (i + 1) + "] \n\t>_");
-						englishGrade = float.Parse(Console.ReadLine());
-						student.SetInformation(idStudent, nameOfStudent, physicGrade, mathGrade, englishGrade);
-					} while (!IsValidationData(student));
-					if (Interface.ConfirmSubmissionBox())
-					{
-						classRoom.Students.Add(student);
-						Interface.SetColorG();
-						Console.WriteLine("\n\tSubmit successfully !");
-						Console.ReadKey();
-					}
-					else
-					{
-						student = null;
-						Interface.SetColorR();
-						Console.WriteLine("\n\tYour change is not submited !");
-						Console.ReadKey();
-					}
-
-				}
-
-			}
-			catch (Exception e)
-			{
-				Interface.SetColorR();
-				Console.WriteLine("\n\tOops ! Something wrong happen !" +
-									"\n\n\tDetail: " + e.Message);
-				Console.ReadKey();
-			}
-		}
-		public void EditStudentInfor()
-		{
-			string idStudent;
-			float gradeMath = 0;
-			float gradePhysic = 0;
-			float gradeEnglish = 0;
-			Student student = new Student();
-			Console.Write("\n\tENTER THE STUDENT ID\n\t>_");
-			idStudent = Console.ReadLine();
-			do
-			{
-				Console.Clear();
-				Interface.SetColorTitle();
-				Console.WriteLine("\n\tEDITING STUDENT [" + idStudent + "]");
-				Console.ResetColor();
-				Console.Write("\n\tNEW ENGLISH GRADE \n\t>_");
-				float.TryParse(Console.ReadLine(), out gradeEnglish);
-				Console.Write("\n\tNEW MATH GRADE \n\t>_");
-				float.TryParse(Console.ReadLine(), out gradeMath);
-				Console.Write("\n\tNEW PHYSIC GRADE \n\t>_");
-				float.TryParse(Console.ReadLine(), out gradePhysic);
-				student.EditGrade(gradePhysic, gradeMath, gradeEnglish);
-			} while (!IsValidationData(student));
-			classRoom.EditGrade(idStudent, gradePhysic, gradeMath, gradeEnglish);
-			Console.ReadKey();
-		}
-		public void RemoveStudent()
-		{
-			string id;
-			Console.Write("\n\tENTER STUDENT ID\n\t>_");
-			id = Console.ReadLine();
-			classRoom.RemoveStudent(id);
-			Console.ReadKey();
-		}
-		public void FindStudentByID()
-		{
-			string idStudent;
-			Console.Clear();
-			Console.WriteLine("\tENTER THE FINDING STUDENT ID");
-			Console.Write("\t>_");
-			idStudent = Console.ReadLine();
-			idStudent.TrimEnd('\n');
-			classRoom.SelectStudentByID(idStudent);
-			Console.ReadKey();
-		}
-		public void DisplayListStudent()
-		{
-			Console.Clear();
-			Console.WriteLine("\t\tTHE GRADE TABLE OF []\n");
-			classRoom.GetListStudent();
-			Interface.SetColorG();
-			Console.WriteLine("\n\tPress any key to return home screen");
-			Console.ReadKey();
-		}
-		private bool IsValidationData(Student student)
-		{
-			return ((student.EnglishGrade >= 0 && student.EnglishGrade <= 10) &&
-					(student.MathGrade >= 0 && student.MathGrade <= 10) &&
-					(student.PhysicGrade >= 0 && student.PhysicGrade <= 10));
 		}
 	}
 }

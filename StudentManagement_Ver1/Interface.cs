@@ -52,6 +52,27 @@ namespace StudentManagement_Ver1
 			SetColorTable();
 		}
 
+		public static void ShowSuccessMessage()
+		{
+			SetColorG();
+			Console.WriteLine("\n\tSubmit successfully !");
+			Console.ResetColor();
+			Console.ReadKey();
+		}
+
+		public static void ShowUnsuccessMessage()
+		{
+			SetColorR();
+			Console.WriteLine("\n\tYour change is not submited !");
+			Console.ResetColor();
+			Console.ReadKey();
+		}
+		public static void ShowRequestMessage()
+		{
+			SetColorG();
+			Console.WriteLine("\n\tPress any key to return home screen");
+		}
+
 		/* What is the Makeup Method
 		 * They are a group of method which make the interface be more beautiful
 		 * SetColorTitle() is used to set the color for tile and table header

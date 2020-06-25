@@ -29,12 +29,12 @@ namespace StudentManagement_Ver1
 				return;
 			}
 		}
-		public void GetListStudent()
+		public void PrintListStudent()
 		{
 			Interface.HeaderOfListTable();
 			foreach (Student student in Students)
 			{
-				student.GetInformation();
+				student.PrintInformation();
 			}
 			Console.ResetColor();
 		}
@@ -44,9 +44,8 @@ namespace StudentManagement_Ver1
 			if (result.Count != 0)
 			{
 				Interface.HeaderOfListTable();
-				result[0].GetInformation();
-				Interface.SetColorG();
-				Console.WriteLine("\n\tPRESS ANY KEY TO RETURN HOME SCREEN !");
+				result[0].PrintInformation();
+				Interface.ShowRequestMessage();
 				Console.ResetColor();
 			}
 			else
@@ -84,31 +83,30 @@ namespace StudentManagement_Ver1
 				Console.ResetColor();
 			}
 		}
-		public void GetListBestStudent()
+		public void PrintListBestStudent()
 		{
 			var result = Students.OrderByDescending(student => student.CalculateAvarage()).ToList();
 			foreach (Student student in Students)
 			{
 				if (student.CalculateAvarage() == result[0].CalculateAvarage())
 				{
-					student.GetInformation();
+					student.PrintInformation();
 				}
 			}
-			Interface.SetColorG();
-			Console.WriteLine("\n\tPress any key to return home screen");
+			Interface.ShowRequestMessage();
 		}
-		public void GetListWorstStudent()
+		public void PrintListWorstStudent()
 		{
 			var result = Students.OrderBy(student => student.CalculateAvarage()).ToList();
 			foreach (Student student in Students)
 			{
 				if (student.CalculateAvarage() == result[0].CalculateAvarage())
 				{
-					student.GetInformation();
+					student.PrintInformation();
 				}
 			}
-			Interface.SetColorG();
-			Console.WriteLine("\n\tPress any key to return home screen");
+			Interface.ShowRequestMessage();
 		}
+
 	}
 }
