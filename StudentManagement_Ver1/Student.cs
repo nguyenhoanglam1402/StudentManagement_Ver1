@@ -6,20 +6,10 @@ namespace StudentManagement_Ver1
 	{
 		public string Id;
 		public string NameOfStudent;
-		public string IdClass;
 		public float PhysicGrade;
 		public float MathGrade;
 		public float EnglishGrade;
-		public Student()
-		{
-			Id = "N/A";
-			NameOfStudent = "N/A";
-			IdClass = "N/A";
-			PhysicGrade = 0;
-			MathGrade = 0;
-			EnglishGrade = 0;
-		}
-		public void SetInformation(string id, string nameOfStudent, float physicGrade,
+		public Student(string id, string nameOfStudent, float physicGrade,
 													float mathGrade, float englishGrade)
 		{
 			Id = id;
@@ -27,6 +17,10 @@ namespace StudentManagement_Ver1
 			PhysicGrade = physicGrade;
 			MathGrade = mathGrade;
 			EnglishGrade = englishGrade;
+		}
+		public Student()
+		{
+
 		}
 		public void EditGrade(float physicGrade, float mathGrade, float englishGrade)
 		{

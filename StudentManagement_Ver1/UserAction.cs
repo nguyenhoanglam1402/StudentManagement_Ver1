@@ -33,19 +33,20 @@ namespace StudentManagement_Ver1
 		}
 		private static Student CreateNewStudentInfor(int index)
 		{
-			Student student = new Student();
-			student.SetInformation(InputIdStudent(index), InputStudentName(index), InputStudentPhysicGrade(index),
+			Student student = new Student(InputIdStudent(index), InputStudentName(index), InputStudentPhysicGrade(index),
 													InputStudentMathGrade(index), InputStudentEnglishGrade(index));
 			return student;
 		}
 		public void ShowWorstStudent()
 		{
+			Console.Clear();
 			Interface.HeaderOfListTable();
 			classRoom.PrintListWorstStudent();
 			Console.ReadKey();
 		}
 		public void ShowBestStudent()
 		{
+			Console.Clear();
 			Interface.HeaderOfListTable();
 			classRoom.PrintListBestStudent();
 			Console.ReadKey();
@@ -53,7 +54,7 @@ namespace StudentManagement_Ver1
 		public void InputStudentInfor()
 		{
 			int amount = 0;
-			Console.Write("\n\tEnter amount of student :>_");
+			Console.Write("\n\t\tEnter amount of student :>_");
 			Console.ResetColor();
 			try
 			{
@@ -61,7 +62,7 @@ namespace StudentManagement_Ver1
 				for (int i = classRoom.Students.Count; i < amount; i++)
 				{
 					Student student = new Student();
-					student = UserAction.CreateNewStudentInfor(i);
+					student = UserAction.CreateNewStudentInfor(i); ;
 					if (Interface.ConfirmSubmissionBox())
 					{
 						classRoom.Students.Add(student);
@@ -132,7 +133,6 @@ namespace StudentManagement_Ver1
 		public void DisplayListStudent()
 		{
 			Console.Clear();
-			Console.WriteLine("\t\tTHE GRADE TABLE OF []\n");
 			classRoom.PrintListStudent();
 			Interface.SetColorG();
 			Console.WriteLine("\n\tPress any key to return home screen");
