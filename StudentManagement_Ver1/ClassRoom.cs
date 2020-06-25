@@ -20,13 +20,11 @@ namespace StudentManagement_Ver1
 			{
 				Interface.SetColorR();
 				Console.WriteLine("\n\tYOUR REQUEST IS NOT SUBMITED !");
-				return;
 			}
 			else
 			{
 				Interface.SetColorR();
 				Console.WriteLine("\n\tYou cannot remove a student who does not exist!");
-				return;
 			}
 		}
 		public void PrintListStudent()

@@ -46,7 +46,7 @@ namespace StudentManagement_Ver1
 							userAction.FindStudentByID();
 							break;
 						case 0:
-							Interface.SetColorCommand();
+							Interface.SetColorTitle();
 							Console.WriteLine("\n\tSee you soon !");
 							break;
 					}

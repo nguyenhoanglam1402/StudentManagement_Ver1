@@ -47,11 +47,10 @@ namespace StudentManagement_Ver1
 		public static void HeaderOfListTable()
 		{
 			SetColorTitle();
-			Console.WriteLine("\t|{0,-10}|{1,-25}|{2,-15}|{3,-15}|{4,-15}|{5,-15}|",
+			Console.WriteLine("\n\t|{0,-10}|{1,-25}|{2,-15}|{3,-15}|{4,-15}|{5,-15}|",
 								"ID", "FULL NAME", "PHYSIC GRADE", "MATH GRADE", "ENGLISH GRADE", "AVERAGE GRADE");
 			SetColorTable();
 		}
-
 		public static void ShowSuccessMessage()
 		{
 			SetColorG();
@@ -59,7 +58,6 @@ namespace StudentManagement_Ver1
 			Console.ResetColor();
 			Console.ReadKey();
 		}
-
 		public static void ShowUnsuccessMessage()
 		{
 			SetColorR();
