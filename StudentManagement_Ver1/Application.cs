@@ -45,10 +45,6 @@ namespace StudentManagement_Ver1
 						case 7:
 							userAction.FindStudentByID();
 							break;
-						case 0:
-							Interface.SetColorTitle();
-							Console.WriteLine("\n\tSee you soon !");
-							break;
 					}
 				}
 				else
@@ -60,6 +56,11 @@ namespace StudentManagement_Ver1
 				}
 				GC.Collect();
 			} while (choice != 0 || isValidChoice == false);
+			userAction = null;
+			Console.Clear();
+			Interface.SetColorCommand();
+			Console.WriteLine("\n\t\tSEE YOU SOON !");
+			Console.ResetColor();
 		}
 	}
 }
