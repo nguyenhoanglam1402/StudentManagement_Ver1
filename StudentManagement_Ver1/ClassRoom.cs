@@ -10,13 +10,14 @@ namespace StudentManagement_Ver1
 		public void RemoveStudent(string id)
 		{
 			var result = Students.Where(student => student.Id == id).ToList();
-			if (Interface.ConfirmSubmissionBox() && result.Count != 0)
+			bool confirm = Interface.ConfirmSubmissionBox();
+			if (confirm && result.Count != 0)
 			{
 				Interface.SetColorG();
 				Console.WriteLine("\n\tYOUR REQUEST IS SUBMITED !");
 				Students.Remove(result[0]);
 			}
-			else if (!Interface.ConfirmSubmissionBox())
+			else if (!confirm)
 			{
 				Interface.SetColorR();
 				Console.WriteLine("\n\tYOUR REQUEST IS NOT SUBMITED !");

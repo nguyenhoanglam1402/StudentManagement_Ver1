@@ -54,15 +54,21 @@ namespace StudentManagement_Ver1
 		public void InputStudentInfor()
 		{
 			int amount = 0;
+			bool isValid = true;
 			Console.Write("\n\t\tEnter amount of student :>_");
 			Console.ResetColor();
 			try
 			{
+
 				amount = classRoom.Students.Count + int.Parse(Console.ReadLine());
 				for (int i = classRoom.Students.Count; i < amount; i++)
 				{
 					Student student = new Student();
-					student = UserAction.CreateNewStudentInfor(i); ;
+					do
+					{
+						student = CreateNewStudentInfor(i);
+						isValid = IsValidationData(student);
+					} while (isValid == false);
 					if (Interface.ConfirmSubmissionBox())
 					{
 						classRoom.Students.Add(student);
@@ -73,8 +79,8 @@ namespace StudentManagement_Ver1
 						student = null;
 						Interface.ShowUnsuccessMessage();
 					}
-
 				}
+
 
 			}
 			catch (Exception e)

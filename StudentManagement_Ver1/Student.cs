@@ -10,7 +10,7 @@ namespace StudentManagement_Ver1
 		public float MathGrade;
 		public float EnglishGrade;
 		public Student(string id, string nameOfStudent, float physicGrade,
-													float mathGrade, float englishGrade)
+										float mathGrade, float englishGrade)
 		{
 			Id = id;
 			NameOfStudent = nameOfStudent;
