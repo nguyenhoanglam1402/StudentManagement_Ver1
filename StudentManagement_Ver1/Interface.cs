@@ -71,7 +71,7 @@ namespace StudentManagement_Ver1
 			Console.WriteLine("\n\tPress any key to return home screen");
 		}
 
-		/* What is the Makeup Method
+		/* What is the Makeup Methods
 		 * They are a group of method which make the interface be more beautiful
 		 * SetColorTitle() is used to set the color for tile and table header
 		 * SetColorTable() is used to set the color for table rows

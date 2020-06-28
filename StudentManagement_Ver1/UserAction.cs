@@ -80,8 +80,6 @@ namespace StudentManagement_Ver1
 						Interface.ShowUnsuccessMessage();
 					}
 				}
-
-
 			}
 			catch (Exception e)
 			{
@@ -94,9 +92,9 @@ namespace StudentManagement_Ver1
 		public void EditStudentInfor()
 		{
 			string idStudent;
-			float gradeMath = 0;
-			float gradePhysic = 0;
-			float gradeEnglish = 0;
+			float gradeMath;
+			float gradePhysic;
+			float gradeEnglish;
 			Student student = new Student();
 			Console.Write("\n\tENTER THE STUDENT ID\n\t>_");
 			idStudent = Console.ReadLine();
