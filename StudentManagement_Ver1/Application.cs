@@ -31,15 +31,15 @@ namespace StudentManagement_Ver1
 							break;
 
 						case 4:
-							userAction.DisplayListStudent();
+							userAction.DisplayAllStudents();
 							break;
 
 						case 5:
-							userAction.ShowBestStudent();
+							userAction.ShowStudentsWithHighestGrade();
 							break;
 
 						case 6:
-							userAction.ShowWorstStudent();
+							userAction.ShowStudentWithLowestMark();
 							break;
 
 						case 7:

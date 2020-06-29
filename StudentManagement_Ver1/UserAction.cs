@@ -37,14 +37,14 @@ namespace StudentManagement_Ver1
 													InputStudentMathGrade(index), InputStudentEnglishGrade(index));
 			return student;
 		}
-		public void ShowWorstStudent()
+		public void ShowStudentWithLowestMark()
 		{
 			Console.Clear();
 			Interface.HeaderOfListTable();
 			classRoom.PrintStudentsWithLowestGrade();
 			Console.ReadKey();
 		}
-		public void ShowBestStudent()
+		public void ShowStudentsWithHighestGrade()
 		{
 			Console.Clear();
 			Interface.HeaderOfListTable();
@@ -134,7 +134,7 @@ namespace StudentManagement_Ver1
 			classRoom.GetStudentByID(idStudent);
 			Console.ReadKey();
 		}
-		public void DisplayListStudent()
+		public void DisplayAllStudents()
 		{
 			Console.Clear();
 			classRoom.PrintAllStudents();
