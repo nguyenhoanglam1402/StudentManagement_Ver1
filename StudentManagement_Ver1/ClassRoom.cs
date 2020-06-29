@@ -7,28 +7,28 @@ namespace StudentManagement_Ver1
 	class ClassRoom
 	{
 		public List<Student> Students = new List<Student>();
-		public void RemoveStudent(string id)
+		public void RemoveStudentByID(string id)
 		{
 			var result = Students.Where(student => student.Id == id).ToList();
 			bool confirm = Interface.ConfirmSubmissionBox();
 			if (confirm && result.Count != 0)
 			{
-				Interface.SetColorG();
+				Interface.SetColorGreen();
 				Console.WriteLine("\n\tYOUR REQUEST IS SUBMITED !");
 				Students.Remove(result[0]);
 			}
 			else if (!confirm)
 			{
-				Interface.SetColorR();
+				Interface.SetColorRed();
 				Console.WriteLine("\n\tYOUR REQUEST IS NOT SUBMITED !");
 			}
 			else
 			{
-				Interface.SetColorR();
+				Interface.SetColorRed();
 				Console.WriteLine("\n\tYou cannot remove a student who does not exist!");
 			}
 		}
-		public void PrintListStudent()
+		public void PrintAllStudents()
 		{
 			Interface.HeaderOfListTable();
 			foreach (Student student in Students)
@@ -37,7 +37,7 @@ namespace StudentManagement_Ver1
 			}
 			Console.ResetColor();
 		}
-		public void SelectStudentByID(string id)
+		public void GetStudentByID(string id)
 		{
 			var result = Students.Where(student => student.Id == id).ToList();
 			if (result.Count != 0)
@@ -49,12 +49,12 @@ namespace StudentManagement_Ver1
 			}
 			else
 			{
-				Interface.SetColorR();
+				Interface.SetColorRed();
 				Console.WriteLine("\n\tTHIS STUDENT DOESN'T EXIST !");
 				Console.ResetColor();
 			}
 		}
-		public void EditGrade(string id, float physicGrade,
+		public void EditGradeByID(string id, float physicGrade,
 								float mathGrade, float englishGrade)
 		{
 			var result = Students.Where(student => student.Id == id).ToList();
@@ -63,13 +63,13 @@ namespace StudentManagement_Ver1
 				if (Interface.ConfirmSubmissionBox())
 				{
 					result[0].EditGrade(physicGrade, mathGrade, englishGrade);
-					Interface.SetColorG();
+					Interface.SetColorGreen();
 					Console.WriteLine("\n\tTHIS REVISION HAS BEEN SUBMITED !");
 					Console.ResetColor();
 				}
 				else
 				{
-					Interface.SetColorR();
+					Interface.SetColorRed();
 					Console.WriteLine("\n\tTHIS REVISION HAS BEEN DELETED !");
 					Console.ResetColor();
 					return;
@@ -77,12 +77,12 @@ namespace StudentManagement_Ver1
 			}
 			else
 			{
-				Interface.SetColorR();
+				Interface.SetColorRed();
 				Console.WriteLine("\n\tTHIS STUDENT DOESN'T EXIST !");
 				Console.ResetColor();
 			}
 		}
-		public void PrintListBestStudent()
+		public void PrintStudentsWithHighestGrade()
 		{
 			var result = Students.OrderByDescending(student => student.CalculateAvarage()).ToList();
 			foreach (Student student in Students)
@@ -94,7 +94,7 @@ namespace StudentManagement_Ver1
 			}
 			Interface.ShowRequestMessage();
 		}
-		public void PrintListWorstStudent()
+		public void PrintStudentsWithLowestGrade()
 		{
 			var result = Students.OrderBy(student => student.CalculateAvarage()).ToList();
 			foreach (Student student in Students)

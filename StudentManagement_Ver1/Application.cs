@@ -7,8 +7,8 @@ namespace StudentManagement_Ver1
 
 		public void Run()
 		{
-			int choice = 0;
-			bool isValidChoice = true;
+			int choice;
+			bool isValidChoice;
 			UserAction userAction = new UserAction();
 			do
 			{
@@ -19,15 +19,15 @@ namespace StudentManagement_Ver1
 					switch (choice)
 					{
 						case 1:
-							userAction.InputStudentInfor();
+							userAction.InputListStudent();
 							break;
 
 						case 2:
-							userAction.EditStudentInfor();
+							userAction.InputEditStudentInfor();
 							break;
 
 						case 3:
-							userAction.RemoveStudent();
+							userAction.InputRemovingStudentID();
 							break;
 
 						case 4:
@@ -49,13 +49,13 @@ namespace StudentManagement_Ver1
 				}
 				else
 				{
-					Interface.SetColorR();
+					Interface.SetColorRed();
 					Console.WriteLine("\n\tYou have chosen invalid selection ! Please try again !");
 					Console.Beep();
 					Console.ReadKey();
 				}
 				GC.Collect();
-			} while (isValidChoice == false);
+			} while (choice > 0 || isValidChoice == false);
 			userAction = null;
 			Console.Clear();
 			Interface.SetColorCommand();

@@ -41,20 +41,20 @@ namespace StudentManagement_Ver1
 		{
 			Console.Clear();
 			Interface.HeaderOfListTable();
-			classRoom.PrintListWorstStudent();
+			classRoom.PrintStudentsWithLowestGrade();
 			Console.ReadKey();
 		}
 		public void ShowBestStudent()
 		{
 			Console.Clear();
 			Interface.HeaderOfListTable();
-			classRoom.PrintListBestStudent();
+			classRoom.PrintStudentsWithHighestGrade();
 			Console.ReadKey();
 		}
-		public void InputStudentInfor()
+		public void InputListStudent()
 		{
-			int amount = 0;
-			bool isValid = true;
+			int amount;
+			bool isValid;
 			Console.Write("\n\t\tEnter amount of student :>_");
 			Console.ResetColor();
 			try
@@ -83,13 +83,13 @@ namespace StudentManagement_Ver1
 			}
 			catch (Exception e)
 			{
-				Interface.SetColorR();
+				Interface.SetColorRed();
 				Console.WriteLine("\n\tOops ! Something wrong happen !" +
 									"\n\n\tDetail: " + e.Message);
 				Console.ReadKey();
 			}
 		}
-		public void EditStudentInfor()
+		public void InputEditStudentInfor()
 		{
 			string idStudent;
 			float gradeMath;
@@ -112,15 +112,15 @@ namespace StudentManagement_Ver1
 				float.TryParse(Console.ReadLine(), out gradePhysic);
 				student.EditGrade(gradePhysic, gradeMath, gradeEnglish);
 			} while (!IsValidationData(student));
-			classRoom.EditGrade(idStudent, gradePhysic, gradeMath, gradeEnglish);
+			classRoom.EditGradeByID(idStudent, gradePhysic, gradeMath, gradeEnglish);
 			Console.ReadKey();
 		}
-		public void RemoveStudent()
+		public void InputRemovingStudentID()
 		{
 			string id;
 			Console.Write("\n\tENTER STUDENT ID\n\t>_");
 			id = Console.ReadLine();
-			classRoom.RemoveStudent(id);
+			classRoom.RemoveStudentByID(id);
 			Console.ReadKey();
 		}
 		public void FindStudentByID()
@@ -131,14 +131,14 @@ namespace StudentManagement_Ver1
 			Console.Write("\t>_");
 			idStudent = Console.ReadLine();
 			idStudent.TrimEnd('\n');
-			classRoom.SelectStudentByID(idStudent);
+			classRoom.GetStudentByID(idStudent);
 			Console.ReadKey();
 		}
 		public void DisplayListStudent()
 		{
 			Console.Clear();
-			classRoom.PrintListStudent();
-			Interface.SetColorG();
+			classRoom.PrintAllStudents();
+			Interface.SetColorGreen();
 			Console.WriteLine("\n\tPress any key to return home screen");
 			Console.ReadKey();
 		}

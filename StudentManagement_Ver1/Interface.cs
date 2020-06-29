@@ -29,9 +29,9 @@ namespace StudentManagement_Ver1
 
 		public static bool ConfirmSubmissionBox()
 		{
-			SetColorG();
+			SetColorGreen();
 			Console.Write("\n\tSubmit [Y]");
-			SetColorR();
+			SetColorRed();
 			Console.WriteLine("\t\tUnsubmit [Any key]");
 			Console.ResetColor();
 			Console.Write("\n\t>_");
@@ -53,21 +53,21 @@ namespace StudentManagement_Ver1
 		}
 		public static void ShowSuccessMessage()
 		{
-			SetColorG();
+			SetColorGreen();
 			Console.WriteLine("\n\tSubmit successfully !");
 			Console.ResetColor();
 			Console.ReadKey();
 		}
 		public static void ShowUnsuccessMessage()
 		{
-			SetColorR();
+			SetColorRed();
 			Console.WriteLine("\n\tYour change is not submited !");
 			Console.ResetColor();
 			Console.ReadKey();
 		}
 		public static void ShowRequestMessage()
 		{
-			SetColorG();
+			SetColorGreen();
 			Console.WriteLine("\n\tPress any key to return home screen");
 		}
 
@@ -75,8 +75,8 @@ namespace StudentManagement_Ver1
 		 * They are a group of method which make the interface be more beautiful
 		 * SetColorTitle() is used to set the color for tile and table header
 		 * SetColorTable() is used to set the color for table rows
-		 * SetColorG() is used to set the color for success message or notification
-		 * SetColorR() is used to set the color for error message or unsuccess message
+		 * SetColorGreen() is used to set the color for success message or notification
+		 * SetColorRed() is used to set the color for error message or unsuccess message
 		 * SetColorCommand() is used to set the color for requirement of system
 		 */
 
@@ -88,7 +88,7 @@ namespace StudentManagement_Ver1
 			Console.ForegroundColor = ConsoleColor.Black;
 		}
 
-		public static void SetColorG()
+		public static void SetColorGreen()
 		{
 			Console.BackgroundColor = ConsoleColor.DarkGreen;
 			Console.ForegroundColor = ConsoleColor.White;
@@ -106,7 +106,7 @@ namespace StudentManagement_Ver1
 			Console.ForegroundColor = ConsoleColor.White;
 		}
 
-		public static void SetColorR()
+		public static void SetColorRed()
 		{
 			Console.BackgroundColor = ConsoleColor.DarkRed;
 			Console.ForegroundColor = ConsoleColor.DarkYellow;
