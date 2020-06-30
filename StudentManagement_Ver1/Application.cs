@@ -55,7 +55,7 @@ namespace StudentManagement_Ver1
 					Console.ReadKey();
 				}
 				GC.Collect();
-			} while (choice > 0 || isValidChoice == false);
+			} while (choice != 0 || isValidChoice == false);
 			userAction = null;
 			Console.Clear();
 			Interface.SetColorCommand();
