@@ -2,7 +2,7 @@
 
 namespace StudentManagement_Ver1
 {
-	class Interface
+	internal class Interface
 	{
 		public static void MenuBoard()
 		{
@@ -44,6 +44,7 @@ namespace StudentManagement_Ver1
 				return false;
 			}
 		}
+
 		public static void HeaderOfListTable()
 		{
 			SetColorTitle();
@@ -51,6 +52,7 @@ namespace StudentManagement_Ver1
 								"ID", "FULL NAME", "PHYSIC GRADE", "MATH GRADE", "ENGLISH GRADE", "AVERAGE GRADE");
 			SetColorTable();
 		}
+
 		public static void ShowSuccessMessage()
 		{
 			SetColorGreen();
@@ -58,6 +60,7 @@ namespace StudentManagement_Ver1
 			Console.ResetColor();
 			Console.ReadKey();
 		}
+
 		public static void ShowUnsuccessMessage()
 		{
 			SetColorRed();
@@ -65,6 +68,7 @@ namespace StudentManagement_Ver1
 			Console.ResetColor();
 			Console.ReadKey();
 		}
+
 		public static void ShowRequestMessage()
 		{
 			SetColorGreen();

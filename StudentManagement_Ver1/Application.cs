@@ -2,9 +2,8 @@
 
 namespace StudentManagement_Ver1
 {
-	class Application
+	internal class Application
 	{
-
 		public void Run()
 		{
 			int choice;

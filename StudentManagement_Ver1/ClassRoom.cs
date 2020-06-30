@@ -4,9 +4,10 @@ using System.Linq;
 
 namespace StudentManagement_Ver1
 {
-	class ClassRoom
+	internal class ClassRoom
 	{
 		public List<Student> Students = new List<Student>();
+
 		public void RemoveStudentByID(string id)
 		{
 			var result = Students.Where(student => student.Id == id).ToList();
@@ -28,6 +29,7 @@ namespace StudentManagement_Ver1
 				Console.WriteLine("\n\tYou cannot remove a student who does not exist!");
 			}
 		}
+
 		public void PrintAllStudents()
 		{
 			Interface.HeaderOfListTable();
@@ -37,6 +39,7 @@ namespace StudentManagement_Ver1
 			}
 			Console.ResetColor();
 		}
+
 		public void GetStudentByID(string id)
 		{
 			var result = Students.Where(student => student.Id == id).ToList();
@@ -54,6 +57,7 @@ namespace StudentManagement_Ver1
 				Console.ResetColor();
 			}
 		}
+
 		public void EditGradeByID(string id, float physicGrade,
 								float mathGrade, float englishGrade)
 		{
@@ -82,6 +86,7 @@ namespace StudentManagement_Ver1
 				Console.ResetColor();
 			}
 		}
+
 		public void PrintStudentsWithHighestGrade()
 		{
 			var result = Students.OrderByDescending(student => student.CalculateAvarage()).ToList();
@@ -94,6 +99,7 @@ namespace StudentManagement_Ver1
 			}
 			Interface.ShowRequestMessage();
 		}
+
 		public void PrintStudentsWithLowestGrade()
 		{
 			var result = Students.OrderBy(student => student.CalculateAvarage()).ToList();
@@ -106,6 +112,5 @@ namespace StudentManagement_Ver1
 			}
 			Interface.ShowRequestMessage();
 		}
-
 	}
 }

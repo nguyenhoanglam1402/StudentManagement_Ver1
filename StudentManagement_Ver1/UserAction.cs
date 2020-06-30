@@ -2,41 +2,48 @@
 
 namespace StudentManagement_Ver1
 {
-	class UserAction
+	internal class UserAction
 	{
-		ClassRoom classRoom = new ClassRoom();
+		private ClassRoom classRoom = new ClassRoom();
+
 		private static string InputIdStudent(int index)
 		{
 			Console.Clear();
 			Console.Write("\tENTER THE STUDENT ID [" + (index + 1) + "] \n\t>_");
 			return (Console.ReadLine());
 		}
+
 		private static string InputStudentName(int index)
 		{
 			Console.Write("\n\tENTER THE STUDENT NAME [" + (index + 1) + "] \n\t>_");
 			return (Console.ReadLine());
 		}
+
 		private static float InputStudentPhysicGrade(int index)
 		{
 			Console.Write("\n\tENTER THE MATH GRADE [" + (index + 1) + "] \n\t>_");
 			return (float.Parse(Console.ReadLine()));
 		}
+
 		private static float InputStudentMathGrade(int index)
 		{
 			Console.Write("\n\tENTER THE PHYSIC GRADE [" + (index + 1) + "] \n\t>_");
 			return (float.Parse(Console.ReadLine()));
 		}
+
 		private static float InputStudentEnglishGrade(int index)
 		{
 			Console.Write("\n\tENTER THE ENGLISH GRADE [" + (index + 1) + "] \n\t>_");
 			return (float.Parse(Console.ReadLine()));
 		}
+
 		private static Student CreateNewStudentInfor(int index)
 		{
 			Student student = new Student(InputIdStudent(index), InputStudentName(index), InputStudentPhysicGrade(index),
 													InputStudentMathGrade(index), InputStudentEnglishGrade(index));
 			return student;
 		}
+
 		public void ShowStudentWithLowestMark()
 		{
 			Console.Clear();
@@ -44,6 +51,7 @@ namespace StudentManagement_Ver1
 			classRoom.PrintStudentsWithLowestGrade();
 			Console.ReadKey();
 		}
+
 		public void ShowStudentsWithHighestGrade()
 		{
 			Console.Clear();
@@ -51,6 +59,7 @@ namespace StudentManagement_Ver1
 			classRoom.PrintStudentsWithHighestGrade();
 			Console.ReadKey();
 		}
+
 		public void InputListStudent()
 		{
 			int amount;
@@ -59,7 +68,6 @@ namespace StudentManagement_Ver1
 			Console.ResetColor();
 			try
 			{
-
 				amount = classRoom.Students.Count + int.Parse(Console.ReadLine());
 				for (int i = classRoom.Students.Count; i < amount; i++)
 				{
@@ -89,6 +97,7 @@ namespace StudentManagement_Ver1
 				Console.ReadKey();
 			}
 		}
+
 		public void InputEditStudentInfor()
 		{
 			string idStudent;
@@ -115,6 +124,7 @@ namespace StudentManagement_Ver1
 			classRoom.EditGradeByID(idStudent, gradePhysic, gradeMath, gradeEnglish);
 			Console.ReadKey();
 		}
+
 		public void InputRemovingStudentID()
 		{
 			string id;
@@ -123,6 +133,7 @@ namespace StudentManagement_Ver1
 			classRoom.RemoveStudentByID(id);
 			Console.ReadKey();
 		}
+
 		public void FindStudentByID()
 		{
 			string idStudent;
@@ -134,6 +145,7 @@ namespace StudentManagement_Ver1
 			classRoom.GetStudentByID(idStudent);
 			Console.ReadKey();
 		}
+
 		public void DisplayAllStudents()
 		{
 			Console.Clear();
@@ -142,6 +154,7 @@ namespace StudentManagement_Ver1
 			Console.WriteLine("\n\tPress any key to return home screen");
 			Console.ReadKey();
 		}
+
 		private static bool IsValidationData(Student student)
 		{
 			return ((student.EnglishGrade >= 0 && student.EnglishGrade <= 10) &&
