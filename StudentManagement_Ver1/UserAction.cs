@@ -8,15 +8,26 @@ namespace StudentManagement_Ver1
 
 		private static string InputIdStudent(int index)
 		{
-			Console.Clear();
-			Console.Write("\tENTER THE STUDENT ID [" + (index + 1) + "] \n\t>_");
-			return (Console.ReadLine());
+			string studentID;
+			do
+			{
+				Console.Clear();
+				Console.Write("\tENTER THE STUDENT ID [" + (index + 1) + "] \n\t>_");
+				studentID = Console.ReadLine();
+			} while (studentID.Length == 0);
+			return (studentID);
 		}
 
 		private static string InputStudentName(int index)
 		{
-			Console.Write("\n\tENTER THE STUDENT NAME [" + (index + 1) + "] \n\t>_");
-			return (Console.ReadLine());
+			string studentName;
+			do
+			{
+				Console.Write("\n\tENTER THE STUDENT NAME [" + (index + 1) + "] \n\t>_");
+				studentName = Console.ReadLine();
+
+			} while (studentName.Length == 0);
+			return (studentName);
 		}
 
 		private static float InputStudentPhysicGrade(int index)
